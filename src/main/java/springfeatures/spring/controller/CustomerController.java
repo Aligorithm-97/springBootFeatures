@@ -2,6 +2,7 @@ package springfeatures.spring.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import springfeatures.spring.configuration.ISide;
 import springfeatures.spring.entity.models.Customer;
 import springfeatures.spring.service.CustomerService;
 import springfeatures.spring.service.CustomerServiceImp;
@@ -14,7 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class CustomerController {
     private final CustomerService customerService;
-
+    private final ISide side;
     @GetMapping("/get")
     public List<Customer> getCustomers() {
         return customerService.getCustomers();
@@ -34,5 +35,10 @@ public class CustomerController {
     @GetMapping("/getbyidparam")
     public Optional<Customer> getCustomerbyIdparam(@RequestParam Long cid) {
         return customerService.getCustomerbyIdparam(cid);
+    }
+
+    @GetMapping("/side")
+    public String confTrial(@RequestParam String name){
+        return side.givenSide(name);
     }
 }
