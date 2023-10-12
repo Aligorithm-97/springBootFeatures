@@ -14,7 +14,7 @@ conf:
         surname: ltest1
 spring:
   profiles:
-    active: dev
+    active: live
     default: live
   task:
     scheduling:
@@ -31,3 +31,19 @@ spring:
       ddl-auto: update
   h2:
     console.enabled: true
+management:
+  endpoint:
+    health:
+      show-details: always
+    info:
+      enabled: true
+  endpoints:
+    jmx:
+      exposure:
+        exclude: '*'
+    web:
+      exposure:
+        include: '*'
+  info:
+    env:
+      enabled: true
