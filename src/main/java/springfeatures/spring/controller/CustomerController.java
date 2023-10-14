@@ -20,13 +20,11 @@ public class CustomerController {
     public List<Customer> getCustomers() {
         return customerService.getCustomers();
     }
-
     @PostMapping("/add")
     public String addCustomer(@RequestBody Customer customerparam) {
         customerService.addCustomer(customerparam);
         return "ok";
     }
-
     @GetMapping("/getbyid/{cid}")
     public Optional<Customer> getCustomerbyId(@PathVariable Long cid) {
         return customerService.getCustomerbyId(cid);
@@ -36,7 +34,6 @@ public class CustomerController {
     public Optional<Customer> getCustomerbyIdparam(@RequestParam Long cid) {
         return customerService.getCustomerbyIdparam(cid);
     }
-
     @GetMapping("/side")
     public String confTrial(@RequestParam String name){
         return side.givenSide(name);
